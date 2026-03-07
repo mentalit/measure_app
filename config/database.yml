@@ -1,3 +1,4 @@
+```yaml
 # PostgreSQL. Versions 9.3 and up are supported.
 #
 # Install the pg driver:
@@ -87,18 +88,21 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: measure_app_production
-    username: measure_app
-    password: <%= ENV["MEASURE_APP_DATABASE_PASSWORD"] %>
+    url: <%= ENV["DATABASE_URL"] %>
+
   cache:
     <<: *primary_production
-    database: measure_app_production_cache
+    url: <%= ENV["DATABASE_URL"] %>
     migrations_paths: db/cache_migrate
+
   queue:
     <<: *primary_production
-    database: measure_app_production_queue
+    url: <%= ENV["DATABASE_URL"] %>
     migrations_paths: db/queue_migrate
+
   cable:
     <<: *primary_production
-    database: measure_app_production_cable
+    url: <%= ENV["DATABASE_URL"] %>
     migrations_paths: db/cable_migrate
+
+
