@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_06_090000) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_12_235711) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -43,6 +43,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_06_090000) do
     t.string "measurement_source", default: "manual", null: false
     t.bigint "room_id", null: false
     t.datetime "updated_at", null: false
+    t.string "wall_name"
     t.index ["room_id"], name: "index_walls_on_room_id"
   end
 
