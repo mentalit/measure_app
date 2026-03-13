@@ -37,6 +37,7 @@ class WallsController < ApplicationController
   # DELETE /walls/1
   def destroy
     @wall.destroy!
+    head :no_content
   end
 
   private
@@ -51,6 +52,13 @@ class WallsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def wall_params
-      params.expect(wall: [ :height, :length, :room_id ])
-    end
+  params.expect(wall: [
+      :height,
+      :length,
+      :room_id,
+      :manual_entered,
+      :measurement_notes,
+      :measurement_source
+    ])
+  end
 end
